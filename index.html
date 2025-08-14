@@ -1,13 +1,375 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Payal Jadhav - Portfolio</title>
+  <title>Payal Jadhav | Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  <h1>Hi, I’m Payal 👋</h1>
-  <p>This is my portfolio website hosted with GitHub Pages!</p>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <span class="logo-text">PJ</span>
+      </div>
+      <ul class="nav-menu">
+        <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="#experience" class="nav-link">Experience</a></li>
+        <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+        <li class="nav-item"><a href="#education" class="nav-link">Education</a></li>
+        <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title">
+            <span class="greeting">Hi, I'm</span>
+            <span class="name">Payal Jadhav</span>
+            <span class="role">Software Engineer</span>
+          </h1>
+          <p class="hero-description">
+            <span class="description-line">From modernizing legacy systems to deploying AI-powered apps, I ship impact, not just code.</span>
+          </p>
+          <div class="hero-buttons">
+            <button class="btn btn-primary" onclick="scrollToSection('projects')">
+              View My Work
+            </button>
+            <button class="btn btn-secondary" onclick="scrollToSection('contact')">
+              Get In Touch
+            </button>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-illustration">
+            <div class="code-symbols">
+              <div class="code-line">const innovation = "endless";</div>
+              <div class="code-line">let solutions = [];</div>
+              <div class="code-line">function buildFuture() {</div>
+              <div class="code-line">  return "amazing";</div>
+              <div class="code-line">}</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p class="about-description">
+            I'm a Software Engineering Specialist with over 3 years of experience at Dassault Systèmes, where I've led backend development 
+            for services used by 300K+ users. I specialize in modernizing legacy systems, implementing RESTful APIs, and building scalable 
+            cloud-native applications.
+          </p>
+          <div class="skills">
+            <h3>Technical Skills</h3>
+            <div class="skill-categories">
+              <div class="skill-category">
+                <h4>Languages</h4>
+                <div class="skill-tags">
+                  <span class="skill-tag">Python</span>
+                  <span class="skill-tag">Java</span>
+                  <span class="skill-tag">JavaScript</span>
+                  <span class="skill-tag">SQL</span>
+                  <span class="skill-tag">Bash</span>
+                </div>
+              </div>
+              <div class="skill-category">
+                <h4>Backend</h4>
+                <div class="skill-tags">
+                  <span class="skill-tag">Node.js</span>
+                  <span class="skill-tag">Spring Boot</span>
+                  <span class="skill-tag">Hibernate</span>
+                  <span class="skill-tag">REST</span>
+                  <span class="skill-tag">JMS</span>
+                </div>
+              </div>
+              <div class="skill-category">
+                <h4>Frontend</h4>
+                <div class="skill-tags">
+                  <span class="skill-tag">React.js</span>
+                  <span class="skill-tag">Vue.js</span>
+                  <span class="skill-tag">HTML/CSS</span>
+                  <span class="skill-tag">TypeScript</span>
+                </div>
+              </div>
+              <div class="skill-category">
+                <h4>DevOps & Cloud</h4>
+                <div class="skill-tags">
+                  <span class="skill-tag">AWS</span>
+                  <span class="skill-tag">GCP</span>
+                  <span class="skill-tag">Docker</span>
+                  <span class="skill-tag">Kubernetes</span>
+                  <span class="skill-tag">Terraform</span>
+                  <span class="skill-tag">CI/CD</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="about-stats">
+          <div class="stat-item">
+            <div class="stat-number" data-target="3">0</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" data-target="300">0</div>
+            <div class="stat-label">K+ Users Served</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" data-target="35">0</div>
+            <div class="stat-label">% Performance Improvement</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="experience">
+    <div class="container">
+      <h2 class="section-title">Work Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item" data-aos="fade-up">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>Software Engineering Specialist</h3>
+            <h4>Dassault Systèmes</h4>
+            <p class="timeline-date">May 2021 - Dec 2023</p>
+            <ul class="timeline-achievements">
+              <li>Implemented RESTful APIs used by 300K+ users with response time less than 20ms, using Spring Boot and Java 8</li>
+              <li>Led backend development for the "Source Code Review" service, managing 100+ microservices on the 3DEXPERIENCE cloud platform</li>
+              <li>Modernized frontend by migrating legacy UI to React.js and Vue.js, delivering Dark Mode and diff comparison features</li>
+              <li>Improved frontend performance by 30% through lazy loading and component-level rendering optimizations</li>
+              <li>Enhanced infrastructure observability using OpenSearch dashboards and real-time trackers</li>
+              <li>Automated CI/CD workflows with 30+ Python scripts and Jenkins, reducing release time by 35%</li>
+              <li>Achieved 100% test coverage rate using JUnit and Mockito</li>
+            </ul>
+            <div class="tech-stack">
+              <span class="tech-tag">Spring Boot</span>
+              <span class="tech-tag">Java 8</span>
+              <span class="tech-tag">React.js</span>
+              <span class="tech-tag">Vue.js</span>
+              <span class="tech-tag">Jenkins</span>
+              <span class="tech-tag">Docker</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="projects">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card" data-aos="fade-up">
+          <div class="project-image">
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="https://github.com/jpayal0110/VibeCheck" class="project-link" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+              </div>
+            </div>
+            <div class="project-placeholder">🎵</div>
+          </div>
+          <div class="project-content">
+            <h3>VibeCheck</h3>
+            <p>AI-powered music recommendation app using React.js and Flask that suggests songs based on user mood using natural-language prompts. Implemented fuzzy search and NLP with FuzzyWuzzy and NLTK.</p>
+            <div class="project-tech">
+              <span class="tech-tag">React.js</span>
+              <span class="tech-tag">Flask</span>
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">NLP</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card" data-aos="fade-up">
+          <div class="project-image">
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="https://github.com/jpayal0110/cloud-native-webapp" class="project-link" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+              </div>
+            </div>
+            <div class="project-placeholder">☁️</div>
+          </div>
+          <div class="project-content">
+            <h3>Cloud-Native Web App</h3>
+            <p>Automated end-to-end cloud infrastructure provisioning on AWS using Terraform, deploying VPCs, EC2, RDS, security groups, and Route 53. Integrated Packer and GitHub Actions for CI/CD.</p>
+            <div class="project-tech">
+              <span class="tech-tag">AWS</span>
+              <span class="tech-tag">Terraform</span>
+              <span class="tech-tag">GitHub Actions</span>
+              <span class="tech-tag">Docker</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card" data-aos="fade-up">
+          <div class="project-image">
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="https://github.com/jpayal0110/EnrollAI" class="project-link" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+              </div>
+            </div>
+            <div class="project-placeholder">🎓</div>
+          </div>
+          <div class="project-content">
+            <h3>EnrollAI</h3>
+            <p>AI-driven course registration platform with personalized recommendations. Built with React.js, Node.js, and prompt-engineered ML model, improving course selection efficiency by 40% for over 100 users.</p>
+            <div class="project-tech">
+              <span class="tech-tag">React.js</span>
+              <span class="tech-tag">Node.js</span>
+              <span class="tech-tag">AI/ML</span>
+              <span class="tech-tag">MongoDB</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card" data-aos="fade-up">
+          <div class="project-image">
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="https://github.com/jpayal0110/smart-whiteboard-app" class="project-link" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+              </div>
+            </div>
+            <div class="project-placeholder">🖼️</div>
+          </div>
+          <div class="project-content">
+            <h3>Smart Whiteboard App</h3>
+            <p>Real-time collaborative whiteboard application built with TypeScript. Features include real-time collaboration, drawing tools, and seamless sharing capabilities.</p>
+            <div class="project-tech">
+              <span class="tech-tag">TypeScript</span>
+              <span class="tech-tag">Real-time</span>
+              <span class="tech-tag">Collaboration</span>
+              <span class="tech-tag">WebRTC</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card" data-aos="fade-up">
+          <div class="project-image">
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="https://github.com/jpayal0110/SnapLink" class="project-link" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+              </div>
+            </div>
+            <div class="project-placeholder">🔗</div>
+          </div>
+          <div class="project-content">
+            <h3>SnapLink</h3>
+            <p>URL shortening service with click tracking and QR code generation. Built with Flask, featuring analytics dashboard and user-friendly interface for link management.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Flask</span>
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">QR Codes</span>
+              <span class="tech-tag">Analytics</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-card" data-aos="fade-up">
+          <div class="project-image">
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="https://github.com/jpayal0110/business-kpi-visualization" class="project-link" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+              </div>
+            </div>
+            <div class="project-placeholder">📊</div>
+          </div>
+          <div class="project-content">
+            <h3>Business KPI Dashboard</h3>
+            <p>Operations & Supply Chain Health Dashboard providing real-time insights into business performance metrics and operational efficiency.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Data Visualization</span>
+              <span class="tech-tag">Dashboard</span>
+              <span class="tech-tag">KPIs</span>
+              <span class="tech-tag">Analytics</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education" class="education">
+    <div class="container">
+      <h2 class="section-title">Education</h2>
+      <div class="education-grid">
+        <div class="education-card" data-aos="fade-up">
+          <div class="education-icon">
+            <img src="NEUlogo.jpg" alt="Northeastern University Logo" class="education-logo">
+          </div>
+          <h3>MS in Computer Software Engineering</h3>
+          <h4>Northeastern University</h4>
+          <p class="education-date">Jan 2024 - Dec 2025</p>
+          <p>Major in Computer Science. Coursework includes Artificial Intelligence for Engineers, Advanced Data Science with Python, Cloud Computing, Application Engineering and Development in Java, Database Design, Web Development Technologies, and Big Data Indexing.</p>
+        </div>
+        <div class="education-card" data-aos="fade-up">
+          <div class="education-icon">
+            <img src="cdaclogo.jpeg" alt="CDAC Logo" class="education-logo">
+          </div>
+          <h3>PG Diploma in Advanced Computing</h3>
+          <h4>Center for Development of Advanced Computing</h4>
+          <p class="education-date">Sept 2020 - Apr 2021</p>
+          <p>Coursework includes Introduction to Python, Object Oriented Programming, Foundations of Multithreaded Programming, Database Technologies, and Advanced Web Technologies.</p>
+        </div>
+        <div class="education-card" data-aos="fade-up">
+          <div class="education-icon">
+            <img src="MUlogo.webp" alt="University of Mumbai Logo" class="education-logo">
+          </div>
+          <h3>Bachelor of Electronics Engineering</h3>
+          <h4>University of Mumbai</h4>
+          <p class="education-date">Sept 2016 - Nov 2020</p>
+          <p>Comprehensive study of electronics engineering principles, circuit design, and electronic systems.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+              <div class="footer-content">
+          <div class="footer-logo">
+            <span class="logo-text">Get In Touch</span>
+          </div>
+          <div class="social-links">
+            <a href="https://github.com/jpayal0110" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/payaljadhav11" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <button class="social-link copy-email-btn" onclick="copyEmail()" title="Copy email address"><i class="fas fa-envelope"></i></button>
+          </div>
+          <p class="footer-text">&copy; 2024 Payal Jadhav. All rights reserved.</p>
+        </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
