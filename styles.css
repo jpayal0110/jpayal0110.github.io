@@ -93,6 +93,25 @@ body {
   height: 40px;
   width: auto;
   object-fit: contain;
+  border: 1px solid transparent;
+  display: block;
+}
+
+/* Fallback if image doesn't load */
+.logo-image:not([src]), 
+.logo-image[src=""],
+.logo-image[src*="data:image/svg+xml"] {
+  display: none;
+}
+
+.logo-text {
+  font-size: 24px;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--text-accent) 0%, var(--text-accent-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: var(--text-accent);
 }
 
 .nav-menu {
