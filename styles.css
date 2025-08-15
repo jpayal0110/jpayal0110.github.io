@@ -89,19 +89,16 @@ body {
   align-items: center;
 }
 
-.logo-text {
-  font-size: 24px;
-  font-weight: 700;
-  background: linear-gradient(135deg, var(--text-accent) 0%, var(--text-accent-secondary) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.logo-image {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
 }
 
 .nav-menu {
   display: flex;
   list-style: none;
-  gap: 30px;
+  gap: 96px;
 }
 
 .nav-link {
@@ -332,7 +329,7 @@ body {
 }
 
 .code-symbols {
-  background: rgba(255, 255, 255, 0.1);
+  /* background: rgba(255, 255, 255, 0.1); */
   backdrop-filter: blur(10px);
   border-radius: 15px;
   padding: 25px;
@@ -702,27 +699,16 @@ section {
   opacity: 0.7;
 }
 
-.project-overlay {
+.project-github-link {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(139, 157, 243, 0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  bottom: 15px;
+  right: 15px;
   opacity: 0;
   transition: all 0.3s ease;
 }
 
-.project-card:hover .project-overlay {
+.project-card:hover .project-github-link {
   opacity: 1;
-}
-
-.project-links {
-  display: flex;
-  gap: 20px;
 }
 
 .project-link {
@@ -1231,7 +1217,7 @@ section {
 
 /* Additional dark theme enhancements */
 [data-theme="dark"] .code-symbols {
-  background: rgba(0, 0, 0, 0.3);
+  /* background: rgba(0, 0, 0, 0.3); */
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -1257,6 +1243,35 @@ section {
 [data-theme="dark"] .timeline-content,
 [data-theme="dark"] .stat-item {
   background: #ffffff;
+}
+
+/* Dark theme text colors for white cards */
+[data-theme="dark"] .project-card h3,
+[data-theme="dark"] .project-card p,
+[data-theme="dark"] .education-card h3,
+[data-theme="dark"] .education-card h4,
+[data-theme="dark"] .education-card p,
+[data-theme="dark"] .timeline-content h3,
+[data-theme="dark"] .timeline-content h4,
+[data-theme="dark"] .timeline-content p,
+[data-theme="dark"] .timeline-content li,
+[data-theme="dark"] .stat-item .stat-number,
+[data-theme="dark"] .stat-item .stat-label {
+  color: #2d2a26;
+}
+
+/* Dark theme tech tags and other elements */
+[data-theme="dark"] .tech-tag {
+  background: var(--gradient-secondary);
+  color: #ffffff;
+}
+
+[data-theme="dark"] .timeline-date {
+  color: #4a4439;
+}
+
+[data-theme="dark"] .timeline-achievements li::before {
+  color: #8b7355;
 }
 
 [data-theme="dark"] .project-link:hover {
