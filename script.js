@@ -496,6 +496,15 @@ document.addEventListener('DOMContentLoaded', initScrollProgress);
 document.addEventListener('DOMContentLoaded', function() {
     // Add smooth hover effects to all interactive elements
     addSmoothHoverEffects();
+    
+    // Initialize floating elements
+    initFloatingElements();
+    
+    // Initialize parallax effects
+    initParallaxEffects();
+    
+    // Initialize scroll-triggered animations
+    initScrollAnimations();
 });
 
 // Add smooth hover effects to interactive elements
@@ -538,3 +547,126 @@ function addSmoothHoverEffects() {
         });
     });
 }
+
+// Create dynamic floating elements
+function initFloatingElements() {
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+    
+    // Create floating dots
+    for (let i = 0; i < 8; i++) {
+        createFloatingDot(hero);
+    }
+    
+    // Create floating shapes
+    createFloatingShape(hero, 'triangle');
+    createFloatingShape(hero, 'square');
+    createFloatingShape(hero, 'circle');
+}
+
+function createFloatingDot(container) {
+    const dot = document.createElement('div');
+    dot.className = 'floating-dot';
+    dot.style.cssText = `
+        position: absolute;
+        width: ${Math.random() * 6 + 4}px;
+        height: ${Math.random() * 6 + 4}px;
+        background: ${getRandomColor()};
+        border-radius: 50%;
+        opacity: ${Math.random() * 0.4 + 0.2};
+        top: ${Math.random() * 80 + 10}%;
+        left: ${Math.random() * 80 + 10}%;
+        animation: float ${Math.random() * 10 + 8}s ease-in-out infinite;
+        animation-delay: ${Math.random() * 5}s;
+        pointer-events: none;
+        z-index: 1;
+    `;
+    container.appendChild(dot);
+}
+
+function createFloatingShape(container, shapeType) {
+    const shape = document.createElement('div');
+    shape.className = `floating-shape ${shapeType}`;
+    container.appendChild(shape);
+}
+
+function getRandomColor() {
+    const colors = ['#8b7355', '#a67c52', '#daa520', '#b8860b'];
+    return colors[Math.floor(Math.random() * colors.length)];
+}
+
+// Parallax scrolling effects
+function initParallaxEffects() {
+    window.addEventListener('scroll', function() {
+        const scrolled = window.pageYOffset;
+        const parallaxElements = document.querySelectorAll('.parallax-element');
+        
+        parallaxElements.forEach(element => {
+            const speed = element.dataset.speed || 0.5;
+            const yPos = -(scrolled * speed);
+            element.style.transform = `translateY(${yPos}px)`;
+        });
+    });
+}
+
+// Enhanced scroll animations
+function initScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+                
+                // Add staggered animation to child elements
+                const children = entry.target.querySelectorAll('[data-animation-order]');
+                children.forEach((child, index) => {
+                    child.style.setProperty('--animation-order', index);
+                    child.style.animationDelay = `${index * 0.1}s`;
+                });
+            }
+        });
+    }, observerOptions);
+    
+    // Observe all sections and cards
+    const elementsToObserve = document.querySelectorAll('.fade-in, .project-card, .education-card, .timeline-item, .skill-tag');
+    elementsToObserve.forEach(el => observer.observe(el));
+}
+
+// Add typing effect to text elements
+function initTypingEffect() {
+    const typingElements = document.querySelectorAll('[data-typing]');
+    
+    typingElements.forEach(element => {
+        const text = element.textContent;
+        element.textContent = '';
+        element.innerHTML = '<span class="typing-cursor"></span>';
+        
+        let i = 0;
+        const typeWriter = () => {
+            if (i < text.length) {
+                element.innerHTML = text.substring(0, i + 1) + '<span class="typing-cursor"></span>';
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        };
+        
+        // Start typing when element comes into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setTimeout(typeWriter, 500);
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+        
+        observer.observe(element);
+    });
+}
+
+// Initialize typing effects
+document.addEventListener('DOMContentLoaded', initTypingEffect);

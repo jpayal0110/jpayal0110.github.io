@@ -45,6 +45,29 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Performance optimizations for animations */
+* {
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth transitions for all elements */
+* {
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 body {
   font-family: 'Poppins', 'Segoe UI', 'Roboto', sans-serif;
   line-height: 1.6;
@@ -150,6 +173,12 @@ body {
   width: 100%;
 }
 
+.nav-item {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 .nav-controls {
   display: flex;
   align-items: center;
@@ -202,6 +231,60 @@ body {
   background: transparent;
   position: relative;
   overflow: hidden;
+}
+
+/* Floating Background Elements */
+.hero::before,
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--text-accent), var(--text-accent-secondary));
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.hero::before {
+  top: 20%;
+  left: 10%;
+  animation: float 8s ease-in-out infinite;
+}
+
+.hero::after {
+  bottom: 20%;
+  right: 10%;
+  animation: float-reverse 10s ease-in-out infinite;
+}
+
+/* Additional Floating Elements */
+.floating-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--text-accent);
+  border-radius: 50%;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.floating-dot:nth-child(1) {
+  top: 30%;
+  left: 20%;
+  animation: float 12s ease-in-out infinite;
+}
+
+.floating-dot:nth-child(2) {
+  top: 60%;
+  right: 25%;
+  animation: float-reverse 15s ease-in-out infinite;
+}
+
+.floating-dot:nth-child(3) {
+  bottom: 30%;
+  left: 30%;
+  animation: float 18s ease-in-out infinite;
 }
 
 .hero-container {
@@ -1035,16 +1118,28 @@ section {
     left: -100%;
     top: 70px;
     flex-direction: column;
-    background-color: white;
+    background-color: var(--card-bg);
     width: 100%;
     text-align: center;
     transition: 0.3s;
-    box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 27px var(--shadow-color);
     padding: 20px 0;
+    z-index: 999;
   }
 
   .nav-menu.active {
     left: 0;
+  }
+
+  .nav-item {
+    margin: 15px 0;
+  }
+
+  .nav-link {
+    font-size: 18px;
+    padding: 10px 20px;
+    display: block;
+    width: 100%;
   }
 
   .hero-content {
@@ -1177,6 +1272,531 @@ section {
 
 .fade-in.fade-in-visible .project-card:nth-child(6) {
   animation-delay: 0.6s;
+}
+
+/* Floating and Moving Elements Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-20px) rotate(2deg);
+  }
+  66% {
+    transform: translateY(-10px) rotate(-1deg);
+  }
+}
+
+@keyframes float-reverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(20px) rotate(-2deg);
+  }
+  66% {
+    transform: translateY(10px) rotate(1deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* Floating Elements */
+.floating-element {
+  animation: float 6s ease-in-out infinite;
+}
+
+.floating-element-reverse {
+  animation: float-reverse 8s ease-in-out infinite;
+}
+
+.floating-element-slow {
+  animation: float 10s ease-in-out infinite;
+}
+
+/* Pulsing Elements */
+.pulse-element {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Bouncing Elements */
+.bounce-element {
+  animation: bounce 2s ease-in-out infinite;
+}
+
+/* Rotating Elements */
+.rotate-element {
+  animation: rotate 20s linear infinite;
+}
+
+.rotate-element-slow {
+  animation: rotate 30s linear infinite;
+}
+
+/* Shimmer Effect */
+.shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Parallax Elements */
+.parallax-element {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Hover Animations */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.hover-rotate {
+  transition: transform 0.3s ease;
+}
+
+.hover-rotate:hover {
+  transform: rotate(5deg);
+}
+
+/* Animated Background Elements */
+.animated-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.animated-bg::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+  animation: rotate 20s linear infinite;
+  pointer-events: none;
+}
+
+/* Floating Geometric Shapes */
+.floating-shape {
+  position: absolute;
+  opacity: 0.1;
+  pointer-events: none;
+  animation: float 15s ease-in-out infinite;
+}
+
+.floating-shape.triangle {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 35px solid var(--text-accent);
+  top: 15%;
+  left: 5%;
+  animation-delay: 2s;
+}
+
+.floating-shape.square {
+  width: 30px;
+  height: 30px;
+  background: var(--text-accent-secondary);
+  transform: rotate(45deg);
+  top: 70%;
+  right: 15%;
+  animation-delay: 4s;
+}
+
+.floating-shape.circle {
+  width: 25px;
+  height: 25px;
+  background: var(--text-accent);
+  border-radius: 50%;
+  bottom: 15%;
+  left: 20%;
+  animation-delay: 6s;
+}
+
+/* Parallax Scrolling Effect */
+.parallax-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Animated Gradient Border */
+.animated-border {
+  position: relative;
+  background: var(--card-bg);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.animated-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 10px;
+  padding: 2px;
+  background: linear-gradient(45deg, var(--text-accent), var(--text-accent-secondary), var(--text-accent));
+  background-size: 200% 200%;
+  animation: shimmer 3s ease infinite;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+}
+
+/* Typing Cursor Effect */
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: var(--text-accent);
+  animation: blink 1s infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Animation In Classes */
+.animate-in {
+  animation: slideUpFade 0.8s ease forwards;
+}
+
+.animate-in-left {
+  animation: slideInLeft 0.8s ease forwards;
+}
+
+.animate-in-right {
+  animation: slideInRight 0.8s ease forwards;
+}
+
+/* Enhanced Section Animations */
+.section-title {
+  position: relative;
+  overflow: hidden;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -100%;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--text-accent), var(--text-accent-secondary));
+  animation: slideInRight 1s ease forwards;
+  animation-delay: 0.5s;
+}
+
+/* Floating Action Button */
+.floating-action-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--text-accent), var(--text-accent-secondary));
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.floating-action-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Enhanced Card Hover Effects */
+.card-hover {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.card-hover:hover::before {
+  left: 100%;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* Animated Underlines */
+.animated-underline {
+  position: relative;
+  text-decoration: none;
+}
+
+.animated-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--text-accent), var(--text-accent-secondary));
+  transition: width 0.3s ease;
+}
+
+.animated-underline:hover::after {
+  width: 100%;
+}
+
+/* Code Symbols Animation */
+.code-symbols .code-line {
+  opacity: 0;
+  animation: slideInLeft 0.8s ease forwards;
+  position: relative;
+}
+
+.code-symbols .code-line:nth-child(1) { animation-delay: 0.2s; }
+.code-symbols .code-line:nth-child(2) { animation-delay: 0.4s; }
+.code-symbols .code-line:nth-child(3) { animation-delay: 0.6s; }
+.code-symbols .code-line:nth-child(4) { animation-delay: 0.8s; }
+.code-symbols .code-line:nth-child(5) { animation-delay: 1.0s; }
+
+/* Enhanced Code Symbols with Floating Effect */
+.code-symbols {
+  position: relative;
+}
+
+.code-symbols::before {
+  content: '{}';
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  font-size: 3rem;
+  color: var(--text-accent);
+  opacity: 0.3;
+  animation: float 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.code-symbols::after {
+  content: '</>';
+  position: absolute;
+  bottom: -20px;
+  left: -20px;
+  font-size: 2rem;
+  color: var(--text-accent-secondary);
+  opacity: 0.4;
+  animation: float-reverse 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Skill Tags Animation */
+.skill-tag {
+  opacity: 0;
+  animation: slideUpFade 0.6s ease forwards;
+  animation-delay: calc(var(--animation-order) * 0.1s);
+}
+
+/* Timeline Animation */
+.timeline-item {
+  opacity: 0;
+  animation: slideInLeft 0.8s ease forwards;
+  animation-delay: calc(var(--animation-order) * 0.2s);
+}
+
+/* Project Cards Animation */
+.project-card {
+  opacity: 0;
+  animation: slideUpFade 0.6s ease forwards;
+  animation-delay: calc(var(--animation-order) * 0.1s);
+  transition: all 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Education Cards Animation */
+.education-card {
+  opacity: 0;
+  animation: slideUpFade 0.6s ease forwards;
+  animation-delay: calc(var(--animation-order) * 0.1s);
+  transition: all 0.3s ease;
+}
+
+.education-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced Button Animations */
+.btn {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Skill Tags Enhanced Animation */
+.skill-tag {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.skill-tag:hover {
+  transform: scale(1.1) rotate(2deg);
+  background: var(--text-accent);
+  color: white;
+}
+
+/* Timeline Enhanced Animation */
+.timeline-item {
+  transition: all 0.3s ease;
+}
+
+.timeline-item:hover {
+  transform: translateX(10px);
+}
+
+.timeline-dot {
+  transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-dot {
+  transform: scale(1.2);
+  box-shadow: 0 0 20px var(--text-accent);
 }
 
 .fade-in.fade-in-visible .education-card:nth-child(1) {
