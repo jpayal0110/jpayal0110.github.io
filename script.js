@@ -1,7 +1,13 @@
 // Portfolio Website JavaScript
 
+// Theme management
+let currentTheme = localStorage.getItem('theme') || 'light';
+
 // DOM Content Loaded
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize theme
+    initTheme();
+    
     // Initialize all functionality
     initNavigation();
     initScrollAnimations();
@@ -10,6 +16,62 @@ document.addEventListener('DOMContentLoaded', function() {
     initNameTypingEffect();
     initCodeTypingEffect();
 });
+
+// Theme initialization and toggle functionality
+function initTheme() {
+    const body = document.body;
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = themeToggle.querySelector('i');
+    
+    // Apply saved theme
+    applyTheme(currentTheme);
+    
+    // Theme toggle event listener
+    themeToggle.addEventListener('click', function() {
+        currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+        applyTheme(currentTheme);
+        localStorage.setItem('theme', currentTheme);
+    });
+}
+
+function applyTheme(theme) {
+    const body = document.body;
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = themeToggle.querySelector('i');
+    const navbar = document.querySelector('.navbar');
+    
+    if (theme === 'dark') {
+        body.setAttribute('data-theme', 'dark');
+        body.classList.remove('light-theme');
+        body.classList.add('dark-theme');
+        themeIcon.className = 'fas fa-sun';
+        themeIcon.style.color = '#ffd700';
+        
+        // Update navbar immediately for dark theme
+        if (window.scrollY > 100) {
+            navbar.style.background = 'rgba(26, 26, 26, 0.98)';
+            navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
+        } else {
+            navbar.style.background = 'rgba(26, 26, 26, 0.95)';
+            navbar.style.boxShadow = 'none';
+        }
+    } else {
+        body.setAttribute('data-theme', 'light');
+        body.classList.remove('dark-theme');
+        body.classList.add('light-theme');
+        themeIcon.className = 'fas fa-moon';
+        themeIcon.style.color = '';
+        
+        // Update navbar immediately for light theme
+        if (window.scrollY > 100) {
+            navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+            navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+        } else {
+            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+            navbar.style.boxShadow = 'none';
+        }
+    }
+}
 
 // Navigation functionality
 function initNavigation() {
@@ -51,12 +113,24 @@ function initNavigation() {
     // Navbar background change on scroll
     window.addEventListener('scroll', function() {
         const navbar = document.querySelector('.navbar');
+        const isDark = document.body.getAttribute('data-theme') === 'dark';
+        
         if (window.scrollY > 100) {
-            navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-            navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            if (isDark) {
+                navbar.style.background = 'rgba(26, 26, 26, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            }
         } else {
-            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-            navbar.style.boxShadow = 'none';
+            if (isDark) {
+                navbar.style.background = 'rgba(26, 26, 26, 0.95)';
+                navbar.style.boxShadow = 'none';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = 'none';
+            }
         }
     });
 }
@@ -110,6 +184,14 @@ function initCounterAnimations() {
                 requestAnimationFrame(updateCounter);
             } else {
                 counter.textContent = target;
+                // Add % symbol for the 35% counter
+                if (target === 35) {
+                    counter.textContent = target + '%';
+                }
+                // Add K+ symbol for the 300K+ counter
+                if (target === 300) {
+                    counter.textContent = target + 'K+';
+                }
             }
         };
 
@@ -266,7 +348,7 @@ function initCodeTypingEffect() {
         };
         
         // Start typing each line with staggered delay
-        setTimeout(typeCode, 2000 + (index * 800)); // Start after name typing, then stagger each line
+        setTimeout(typeCode, 500 + (index * 300)); // Start same time as name, then stagger each line
     });
 }
 
