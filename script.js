@@ -631,8 +631,8 @@ function initScrollAnimations() {
         });
     }, observerOptions);
     
-    // Observe all sections and cards
-    const elementsToObserve = document.querySelectorAll('.fade-in, .project-card, .education-card, .timeline-item, .skill-tag');
+    // Observe cards and tags; timeline items are faded in via CSS so dots stay on the line
+    const elementsToObserve = document.querySelectorAll('.fade-in, .project-card, .education-card, .skill-tag');
     elementsToObserve.forEach(el => observer.observe(el));
 }
 

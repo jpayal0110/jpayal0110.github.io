@@ -647,21 +647,19 @@ section {
   top: 0;
   bottom: 0;
   width: 2px;
+  margin-left: -1px;
   background: linear-gradient(135deg, var(--text-accent) 0%, var(--text-accent-secondary) 100%);
-  transform: translateX(-50%);
 }
 
 .timeline-item {
   position: relative;
   margin-bottom: 60px;
   opacity: 0;
-  transform: translateY(50px);
-  transition: all 0.6s ease;
+  transition: opacity 0.6s ease;
 }
 
 .timeline-item.animate {
   opacity: 1;
-  transform: translateY(0);
 }
 
 .timeline-dot {
@@ -670,10 +668,11 @@ section {
   top: 20px;
   width: 20px;
   height: 20px;
+  margin-left: -10px;
   background: linear-gradient(135deg, var(--text-accent) 0%, var(--text-accent-secondary) 100%);
   border-radius: 50%;
-  transform: translateX(-50%);
   z-index: 2;
+  backface-visibility: visible;
 }
 
 .timeline-content {
@@ -1193,10 +1192,12 @@ section {
 
   .timeline::before {
     left: 20px;
+    margin-left: 0;
   }
 
   .timeline-dot {
     left: 20px;
+    margin-left: -9px;
   }
 
   .timeline-content {
@@ -1240,22 +1241,25 @@ section {
 }
 
 /* Staggered animations for child elements */
-.fade-in.fade-in-visible .timeline-item,
 .fade-in.fade-in-visible .project-card,
 .fade-in.fade-in-visible .education-card,
 .fade-in.fade-in-visible .stat-item {
   animation: slideUpFade 0.6s ease forwards;
 }
 
-.fade-in.fade-in-visible .timeline-item:nth-child(1) {
+.fade-in.fade-in-visible .timeline-item .timeline-content {
+  animation: slideUpFade 0.6s ease forwards;
+}
+
+.fade-in.fade-in-visible .timeline-item:nth-child(1) .timeline-content {
   animation-delay: 0.1s;
 }
 
-.fade-in.fade-in-visible .timeline-item:nth-child(2) {
+.fade-in.fade-in-visible .timeline-item:nth-child(2) .timeline-content {
   animation-delay: 0.2s;
 }
 
-.fade-in.fade-in-visible .timeline-item:nth-child(3) {
+.fade-in.fade-in-visible .timeline-item:nth-child(3) .timeline-content {
   animation-delay: 0.3s;
 }
 
@@ -1566,6 +1570,23 @@ section {
   51%, 100% { opacity: 0; }
 }
 
+.timeline,
+.timeline::before,
+.timeline-item,
+.timeline-dot {
+  backface-visibility: visible;
+}
+
+.timeline-item,
+.timeline-item.animate,
+.timeline-item.animate-in {
+  transform: none;
+}
+
+.timeline-item.animate-in {
+  animation: timelineFadeIn 0.8s ease forwards;
+}
+
 /* Animation In Classes */
 .animate-in {
   animation: slideUpFade 0.8s ease forwards;
@@ -1718,11 +1739,20 @@ section {
   animation-delay: calc(var(--animation-order) * 0.1s);
 }
 
-/* Timeline Animation */
+/* Timeline Animation — fade the item only so the dot stays on the line */
 .timeline-item {
   opacity: 0;
-  animation: slideInLeft 0.8s ease forwards;
+  animation: timelineFadeIn 0.8s ease forwards;
   animation-delay: calc(var(--animation-order) * 0.2s);
+}
+
+@keyframes timelineFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Project Cards Animation */
@@ -1792,15 +1822,11 @@ section {
 
 /* Timeline Enhanced Animation */
 .timeline-item {
-  transition: all 0.3s ease;
-}
-
-.timeline-item:hover {
-  transform: translateX(10px);
+  transition: opacity 0.3s ease;
 }
 
 .timeline-dot {
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .timeline-item:hover .timeline-dot {
