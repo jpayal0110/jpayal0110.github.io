@@ -1,432 +1,729 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <script>
+    (function () {
+      try {
+        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          document.documentElement.classList.add("hero-loading");
+          window.setTimeout(function () {
+            var root = document.documentElement;
+            if (root.classList.contains("hero-loading") && !root.classList.contains("hero-done")) {
+              root.classList.remove("hero-loading", "hero-play");
+              root.classList.add("hero-done");
+            }
+          }, 4000);
+        }
+        var focus = new URLSearchParams(window.location.search).get("focus");
+        if (focus === "software" || focus === "data" || focus === "ai" || focus === "all") {
+          document.documentElement.dataset.focus = focus;
+        }
+      } catch (e) {}
+    })();
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Payal Jadhav | Portfolio</title>
-  <link rel="icon" type="image/jpeg" href="initialLogo.jpg">
-  <link rel="apple-touch-icon" href="initialLogo.jpg">
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <title>Payal Jadhav | Software Engineer · AI/ML · Data</title>
+  <meta name="description" content="Software engineer building backend, data and applied AI systems across Java, Spring Boot, Python, FastAPI, React and ML/LLM workflows." />
+  <link rel="canonical" href="https://jpayal0110.github.io/" />
+
+  <meta property="og:title" content="Payal Jadhav | Software Engineer · AI/ML · Data" />
+  <meta property="og:description" content="Software engineer building backend, data and applied AI systems across Java, Spring Boot, Python, FastAPI, React and ML/LLM workflows." />
+  <meta property="og:url" content="https://jpayal0110.github.io/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://jpayal0110.github.io/initialLogo.jpg" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Payal Jadhav | Software Engineer · AI/ML · Data" />
+  <meta name="twitter:description" content="Software engineer building backend, data and applied AI systems across Java, Spring Boot, Python, FastAPI, React and ML/LLM workflows." />
+
+  <meta name="theme-color" content="#FBF7F1" />
+  <link rel="icon" type="image/jpeg" href="initialLogo.jpg" />
+  <link rel="apple-touch-icon" href="initialLogo.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
+<body>
+  <a class="skip-link" href="#home">Skip to content</a>
 
-<body class="light-theme">
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="nav-container">
-      <div class="nav-logo">
-        <img src="initialLogo.jpg" alt="PJ Logo" class="logo-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-        <span class="logo-text" style="display: none;">PJ</span>
-      </div>
-      <ul class="nav-menu">
-        <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
-        <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
-        <li class="nav-item"><a href="#experience" class="nav-link">Experience</a></li>
-        <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
-        <li class="nav-item"><a href="#education" class="nav-link">Education</a></li>
-        <li class="nav-item"><a href="#footer" class="nav-link">Contact</a></li>
-      </ul>
-      <div class="nav-controls">
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-          <i class="fas fa-moon"></i>
-        </button>
-        <div class="hamburger">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </div>
-      </div>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#home" aria-label="Payal Jadhav — back to top">
+        <span class="brand-mark">PJ</span>
+        <span class="brand-divider" aria-hidden="true"></span>
+        <span class="brand-name">Payal Jadhav</span>
+      </a>
+
+      <nav id="primary-nav" class="primary-nav" aria-label="Primary">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li class="nav-cta-mobile"><a class="btn btn-primary" href="#contact">Let’s talk <span aria-hidden="true">→</span></a></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn-nav" href="#contact">Let’s talk <span aria-hidden="true">→</span></a>
+
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
-  </nav>
+  </header>
 
-  <!-- Hero Section -->
-  <section id="home" class="hero">
-    <div class="hero-container">
-      <div class="hero-content">
-        <div class="hero-text">
-          <h1 class="hero-title">
-            <span class="greeting">Hi, I'm</span>
-            <span class="name">Payal Jadhav</span>
-            <span class="role">Software Engineer</span>
-          </h1>
-          <p class="hero-description">
-            <span class="description-line">From modernizing legacy systems to deploying AI-powered apps...</span>
-            <span class="description-line">I ship impact, not just code!</span>
-          </p>
-          <div class="hero-buttons">
-            <button class="btn btn-secondary"
-              onclick="document.querySelector('#projects').scrollIntoView({behavior: 'smooth'})">
-              My Work
-            </button>
-            <button class="btn btn-secondary"
-              onclick="window.open('https://drive.google.com/file/d/1k-C1hWakHBh3ifbddDpZ3f9SSL9_ub3J/view?usp=sharing', '_blank')">
-              Resume
-            </button>
-            <button class="btn btn-secondary"
-              onclick="document.querySelector('.footer').scrollIntoView({behavior: 'smooth'})">
-              Get In Touch
-            </button>
+  <main>
+    <section id="home" class="hero hero-intro">
+      <div class="hero-shape hero-shape--1" data-repel="true" aria-hidden="true">
+        <div class="hero-shape-inner"></div>
+      </div>
+      <div class="hero-shape hero-shape--2" data-repel="true" aria-hidden="true">
+        <div class="hero-shape-inner"></div>
+      </div>
+      <div class="hero-shape hero-shape--3" data-repel="true" aria-hidden="true">
+        <div class="hero-shape-inner"></div>
+      </div>
+      <svg class="deco-botanical deco-botanical-hero hero-leaf" viewBox="0 0 180 260" aria-hidden="true">
+        <path d="M120 250c-8-46 6-78 28-112" fill="none" stroke="currentColor" stroke-width="1.2"/>
+        <path d="M148 138c-22-6-38 8-44 24 18 4 36-8 44-24z" fill="currentColor"/>
+        <path d="M132 168c-18-4-30 10-34 22 14 2 28-8 34-22z" fill="currentColor"/>
+        <path d="M118 198c-14-2-24 8-26 18 12 1 22-6 26-18z" fill="currentColor"/>
+      </svg>
+
+      <div class="container hero-grid">
+        <div class="hero-copy hero-identity">
+          <p class="eyebrow">Hi, I’m</p>
+          <h1 class="hero-title">Payal Jadhav</h1>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">My Work <span aria-hidden="true">→</span></a>
+            <a class="btn btn-ghost" href="#experience">My Experience <span aria-hidden="true">→</span></a>
+            <a class="btn btn-ghost" href="https://drive.google.com/file/d/1WtlBH9k1nz4zqv8XnWNn13hp8W4rcG-D/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Download resume</a>
           </div>
         </div>
-        <div class="hero-visual">
-          <div class="hero-illustration">
-            <div class="code-symbols">
-              <div class="code-line">const innovation = "endless";</div>
-              <div class="code-line">let solutions = [];</div>
-              <div class="code-line">function buildFuture() {</div>
-              <div class="code-line"> return "amazing";</div>
-              <div class="code-line">}</div>
+
+        <div class="hero-statement hero-secondary">
+          <p class="hero-manifesto">I turn complex problems into deployed <em>technical</em> <em>systems.</em></p>
+          <p class="hero-subtitle">Software Engineering · AI/ML · Data · Operational Systems</p>
+          <p class="hero-lede">3.5 years building production software, data-heavy applications and AI/ML systems. I can move from ambiguous business requirements to APIs, pipelines, models, dashboards and production deployment.</p>
+        </div>
+      </div>
+
+      <a class="scroll-hint" href="#about">
+        <span>Learn more about me</span>
+      </a>
+    </section>
+
+    <section id="about" class="section about">
+      <div class="deco deco-circle deco-about" aria-hidden="true"></div>
+      <div class="container">
+        <div class="skills-block reveal">
+          <div class="skills-heading">
+            <div>
+              <h3 class="section-subhead">Technical Skills</h3>
+            </div>
+          </div>
+          <div class="skill-grid">
+            <article class="skill-category-card" data-focus="software data ai">
+              <div class="skill-category-header">
+                <div class="skill-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4"/></svg>
+                </div>
+                <div class="skill-heading">
+                  <h3>Languages</h3>
+                </div>
+              </div>
+              <div class="skill-tags">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">Go</span>
+                <span class="skill-tag">Java</span>
+                <span class="skill-tag">C#</span>
+                <span class="skill-tag">SQL</span>
+                <span class="skill-tag">C++</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">TypeScript</span>
+                <span class="skill-tag">HTML</span>
+                <span class="skill-tag">CSS</span>
+                <span class="skill-tag">Shell Scripting</span>
+              </div>
+            </article>
+            <article class="skill-category-card" data-focus="software">
+              <div class="skill-category-header">
+                <div class="skill-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg>
+                </div>
+                <div class="skill-heading">
+                  <h3>Frameworks</h3>
+                </div>
+              </div>
+              <div class="skill-tags">
+                <span class="skill-tag">FastAPI</span>
+                <span class="skill-tag">Spring Boot</span>
+                <span class="skill-tag">Microservices</span>
+                <span class="skill-tag">React.js</span>
+                <span class="skill-tag">Vue.js</span>
+                <span class="skill-tag">Node.js</span>
+                <span class="skill-tag">Apache Kafka</span>
+                <span class="skill-tag">Hibernate</span>
+                <span class="skill-tag">GraphQL</span>
+                <span class="skill-tag">REST APIs</span>
+                <span class="skill-tag">JMS</span>
+              </div>
+            </article>
+            <article class="skill-category-card" data-focus="ai">
+              <div class="skill-category-header">
+                <div class="skill-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l1.8 4.8L19 9.5l-4.2 3.1L16 18l-4-2.6L8 18l1.2-5.4L5 9.5l5.2-1.7L12 3z"/></svg>
+                </div>
+                <div class="skill-heading">
+                  <h3>AI / ML</h3>
+                </div>
+              </div>
+              <div class="skill-tags">
+                <span class="skill-tag">Generative AI</span>
+                <span class="skill-tag">LLMs (Gemini, GPT)</span>
+                <span class="skill-tag">Agentic Workflows</span>
+                <span class="skill-tag">RAG</span>
+                <span class="skill-tag">LangChain</span>
+                <span class="skill-tag">Prompt Engineering</span>
+                <span class="skill-tag">NLP</span>
+                <span class="skill-tag">PyTorch</span>
+                <span class="skill-tag">TensorFlow</span>
+                <span class="skill-tag">Scikit-learn</span>
+                <span class="skill-tag">Pandas</span>
+              </div>
+            </article>
+            <article class="skill-category-card" data-focus="software data">
+              <div class="skill-category-header">
+                <div class="skill-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 16a4 4 0 010-8 5.5 5.5 0 0110.7-1.5A4.5 4.5 0 1118 16H6z"/></svg>
+                </div>
+                <div class="skill-heading">
+                  <h3>Cloud &amp; DevOps</h3>
+                </div>
+              </div>
+              <div class="skill-tags">
+                <span class="skill-tag">AWS (EC2, S3, Lambda, IAM, CloudWatch)</span>
+                <span class="skill-tag">GCP (Compute Engine, IAM, VPC)</span>
+                <span class="skill-tag">Docker</span>
+                <span class="skill-tag">Kubernetes</span>
+                <span class="skill-tag">Terraform</span>
+                <span class="skill-tag">Jenkins</span>
+                <span class="skill-tag">CI/CD Pipelines</span>
+              </div>
+            </article>
+            <article class="skill-category-card" data-focus="data software">
+              <div class="skill-category-header">
+                <div class="skill-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="7" rx="7" ry="3"/><path d="M5 7v10c0 1.7 3.1 3 7 3s7-1.3 7-3V7"/><path d="M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/></svg>
+                </div>
+                <div class="skill-heading">
+                  <h3>Databases &amp; Tools</h3>
+                </div>
+              </div>
+              <div class="skill-tags">
+                <span class="skill-tag">PostgreSQL</span>
+                <span class="skill-tag">Oracle SQL</span>
+                <span class="skill-tag">MySQL</span>
+                <span class="skill-tag">MariaDB</span>
+                <span class="skill-tag">NoSQL</span>
+                <span class="skill-tag">MongoDB</span>
+                <span class="skill-tag">Git</span>
+                <span class="skill-tag">Jira</span>
+                <span class="skill-tag">Postman</span>
+                <span class="skill-tag">Power BI</span>
+                <span class="skill-tag">Tableau</span>
+                <span class="skill-tag">Spark</span>
+                <span class="skill-tag">Tomcat</span>
+                <span class="skill-tag">Swagger</span>
+              </div>
+            </article>
+            <article class="skill-category-card" data-focus="software">
+              <div class="skill-category-header">
+                <div class="skill-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                </div>
+                <div class="skill-heading">
+                  <h3>Engineering Systems</h3>
+                </div>
+              </div>
+              <div class="skill-tags">
+                <span class="skill-tag">PLM</span>
+                <span class="skill-tag">Product Configuration</span>
+                <span class="skill-tag">Engineering Simulation Workflows</span>
+                <span class="skill-tag">Hardware-Software Integration</span>
+                <span class="skill-tag">3DEXPERIENCE</span>
+              </div>
+            </article>
+            <article class="skill-category-card additional-skills" data-focus="software data ai">
+              <div class="skill-category-header">
+                <div class="skill-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 15.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7z"/><path d="M19.4 13a7.7 7.7 0 00.1-2l2-1.2-2-3.4-2.3.6a7.5 7.5 0 00-1.7-1L15 4h-6l-.5 2.1a7.5 7.5 0 00-1.7 1L4.5 6.4l-2 3.4L4.5 11a7.7 7.7 0 000 2l-2 1.2 2 3.4 2.3-.6a7.5 7.5 0 001.7 1L9 20h6l.5-2.1a7.5 7.5 0 001.7-1l2.3.6 2-3.4-2.1-1.1z"/></svg>
+                </div>
+                <div class="skill-heading">
+                  <h3>Additional Skills</h3>
+                </div>
+              </div>
+              <div class="skill-tags">
+                <span class="skill-tag">SDLC</span>
+                <span class="skill-tag">Agile</span>
+                <span class="skill-tag">Version Control</span>
+                <span class="skill-tag">Redis</span>
+                <span class="skill-tag">Kibana</span>
+                <span class="skill-tag">RabbitMQ</span>
+                <span class="skill-tag">Elasticsearch</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="metrics-strip reveal">
+          <div class="metric-item">
+            <div class="metric-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="7" width="12" height="14" rx="1"/><path d="M9 7V5a3 3 0 016 0v2"/><path d="M10 12h4"/></svg>
+            </div>
+            <div class="metric-content">
+              <p class="metric-value" data-count="3.5" data-suffix="+" aria-label="3.5+">3.5+</p>
+              <p class="metric-label">Years Experience</p>
+            </div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="8" r="3"/><path d="M3 19c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.2"/><path d="M17 13c2.4.4 4 2.4 4 5"/></svg>
+            </div>
+            <div class="metric-content">
+              <p class="metric-value" data-count="300" data-suffix="K+" aria-label="300K+">300K+</p>
+              <p class="metric-label">Users Served</p>
+            </div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19V8M10 19V5M16 19v-7M22 19H2"/><path d="M16 8l4-3 2 2"/></svg>
+            </div>
+            <div class="metric-content">
+              <p class="metric-value" data-count="35" data-suffix="%" aria-label="35%">35%</p>
+              <p class="metric-label">Performance Improvement</p>
             </div>
           </div>
         </div>
-
       </div>
-    </div>
-    <div class="scroll-indicator">
-      <div class="scroll-arrow"></div>
-    </div>
-  </section>
+    </section>
 
-  <!-- About Section -->
-  <section id="about" class="about">
-    <div class="container">
-      <h2 class="section-title">About Me</h2>
-      <div class="about-content">
-        <div class="about-text">
-          <p class="about-description">
-            I connect engineering with product strategy to ensure every feature has purpose and impact. My focus is on designing better architectures, streamlining pipelines, and building smarter solutions that stand the test of time. I enjoy solving complex problems and watching them turn into tools people actually use.
-          </p>
-          <div class="skills">
-            <h3>Technical Skills</h3>
-            <div class="skill-categories">
-              <div class="skill-category">
-                <h4>Languages</h4>
-                <div class="skill-tags">
-                  <span class="skill-tag">Python</span>
-                  <span class="skill-tag">Java</span>
-                  <span class="skill-tag">JavaScript</span>
-                  <span class="skill-tag">SQL</span>
-                  <span class="skill-tag">Bash</span>
-                </div>
+
+    <section id="experience" class="section experience">
+      <svg class="deco-botanical deco-botanical-exp" viewBox="0 0 160 220" aria-hidden="true">
+        <path d="M20 210c10-50-4-80-22-110" fill="none" stroke="currentColor" stroke-width="1.2"/>
+        <path d="M-2 100c20-4 36 10 40 24-16 2-32-10-40-24z" fill="currentColor"/>
+        <path d="M12 132c16-2 28 10 30 22-12 1-24-8-30-22z" fill="currentColor"/>
+      </svg>
+
+      <div class="container">
+        <div class="section-heading reveal">
+          <h2 class="section-title">Work Experience</h2>
+        </div>
+
+        <div class="experience-layout">
+          <div class="timeline">
+            <article class="timeline-card reveal">
+              <div class="timeline-meta">
+                <h3>Software Engineer, AI/ML Research</h3>
+                <p class="org">Northeastern University</p>
+                <p class="dates">Feb 2026 – Present</p>
               </div>
-              <div class="skill-category">
-                <h4>AI/ML</h4>
-                <div class="skill-tags">
-                  <span class="skill-tag">RAG</span>
-                  <span class="skill-tag">LLMs</span>
-                  <span class="skill-tag">Agentic Workflows</span>
-                  <span class="skill-tag">NLP</span>
-                  <span class="skill-tag">Prompt Engineering</span>
-                  <span class="skill-tag">PyTorch</span>
-                  <span class="skill-tag">TensorFlow</span>
-                </div>
+              <p class="role-product">FrailTrack</p>
+              <p class="role-summary">Browser-based multimodal frailty screening that captures visual, hearing, and mobility assessments, then serves real-time ML inference through a React and FastAPI workflow.</p>
+              <ul>
+                <li class="focus-software focus-data focus-ai">Built FrailTrack, an end-to-end multimodal AI web application using React/TypeScript and FastAPI to capture cognitive, hearing, and mobility telemetry for a real-time frailty screening workflow.</li>
+              </ul>
+              <button class="impact-toggle" type="button" aria-expanded="false" aria-controls="neu-impact">
+                <span class="impact-toggle-label">View more impact</span>
+                <span class="impact-toggle-icon" aria-hidden="true">↓</span>
+              </button>
+              <div class="impact-more" id="neu-impact" hidden>
+                <p class="impact-group">Data / ML</p>
+                <ul>
+                  <li class="focus-data focus-ai">Designed an ETL and feature pipeline that turns clinical datasets into continuous digital biomarkers, mapping cognitive and mobility measures into reaction-time, error, and kinematic telemetry.</li>
+                  <li class="focus-data focus-ai">Retrained Random Forest models and re-aligned feature schemas with live frontend JSON payloads so FastAPI can serve real-time predictions from interactive behavioral signals.</li>
+                </ul>
+                <p class="impact-group">Research</p>
+                <ul>
+                  <li class="focus-ai focus-software">Translated static OpenCV assessment metrics into dynamic web telemetry and demoed the platform to faculty and research stakeholders.</li>
+                </ul>
               </div>
-              <div class="skill-category">
-                <h4>Backend</h4>
-                <div class="skill-tags">
-                  <span class="skill-tag">Node.js</span>
-                  <span class="skill-tag">Spring Boot</span>
-                  <span class="skill-tag">Hibernate</span>
-                  <span class="skill-tag">REST</span>
-                  <span class="skill-tag">JMS</span>
-                </div>
+              <div class="pills">
+                <span>React</span><span>TypeScript</span><span>FastAPI</span><span>Random Forest</span><span>OpenCV</span><span>Python</span>
               </div>
-              <div class="skill-category">
-                <h4>Frontend</h4>
-                <div class="skill-tags">
-                  <span class="skill-tag">React.js</span>
-                  <span class="skill-tag">Vue.js</span>
-                  <span class="skill-tag">HTML/CSS</span>
-                  <span class="skill-tag">TypeScript</span>
-                </div>
+            </article>
+
+            <article class="timeline-card reveal">
+              <div class="timeline-meta">
+                <h3>Software / Data Engineering Specialist</h3>
+                <p class="org">Dassault Systèmes</p>
+                <p class="dates">May 2021 – Dec 2023</p>
               </div>
-              <div class="skill-category">
-                <h4>DevOps & Cloud</h4>
-                <div class="skill-tags">
-                  <span class="skill-tag">AWS</span>
-                  <span class="skill-tag">GCP</span>
-                  <span class="skill-tag">Docker</span>
-                  <span class="skill-tag">Kubernetes</span>
-                  <span class="skill-tag">Terraform</span>
-                  <span class="skill-tag">CI/CD</span>
-                </div>
+              <ul>
+                <li class="focus-software">Built Java/Spring Boot APIs supporting 300K+ users across a 100+ microservice ecosystem.</li>
+                <li class="focus-software">Delivered API response times under 20ms and improved frontend performance by 30%.</li>
+                <li class="focus-software">Automated CI/CD with Python and Jenkins, reducing release cycle time by 35%.</li>
+              </ul>
+              <button class="impact-toggle" type="button" aria-expanded="false" aria-controls="dassault-impact">
+                <span class="impact-toggle-label">View more impact</span>
+                <span class="impact-toggle-icon" aria-hidden="true">↓</span>
+              </button>
+              <div class="impact-more" id="dassault-impact" hidden>
+                <ul>
+                  <li class="focus-software">Led backend development for the “Source Code Review” service, managing 100+ microservices on the 3DEXPERIENCE cloud platform.</li>
+                  <li class="focus-software">Modernized frontend by migrating legacy UI to React.js and Vue.js, delivering Dark Mode and diff comparison features.</li>
+                  <li class="focus-software">Improved frontend performance by 30% through lazy loading and component-level rendering optimizations.</li>
+                  <li class="focus-software">Enhanced infrastructure observability using OpenSearch dashboards and real-time trackers.</li>
+                  <li class="focus-software">Automated CI/CD workflows with 30+ Python scripts and Jenkins, reducing release time by 35%.</li>
+                  <li class="focus-software">Achieved 100% test coverage rate using JUnit and Mockito.</li>
+                </ul>
               </div>
-              <div class="skill-category">
-                <h4>Databases</h4>
-                <div class="skill-tags">
-                  <span class="skill-tag">Oracle SQL</span>
-                  <span class="skill-tag">MySQL</span>
-                  <span class="skill-tag">NoSQL</span>
-                  <span class="skill-tag">MariaDB</span>
-                </div>
+              <div class="pills">
+                <span>Java</span><span>Spring Boot</span><span>React</span><span>Vue</span><span>Python</span><span>Jenkins</span><span>OpenSearch</span>
               </div>
-              <div class="skill-category">
-                <h4>Additinal Skills</h4>
-                <div class="skill-tags">
-                  <span class="skill-tag">Git</span>
-                  <span class="skill-tag">GraphQL</span>
-                  <span class="skill-tag">Redis</span>
-                  <span class="skill-tag">Kibana</span>
-                  <span class="skill-tag">RabbitMQ</span>
-                  <span class="skill-tag">Elasticsearch</span>
-                </div>
-              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="recognition" class="section recognition">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Recognition</p>
+          <h2 class="section-title">Awards &amp; Certifications</h2>
+        </div>
+        <div class="award-grid">
+          <article class="award-card reveal" data-focus="software">
+            <div class="award-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 4h8v4a4 4 0 01-8 0V4z"/><path d="M8 6H5.5a2.5 2.5 0 000 5H8"/><path d="M16 6h2.5a2.5 2.5 0 010 5H16"/><path d="M12 12v3"/><path d="M9 20h6"/><path d="M10 15h4v2.5a2 2 0 01-4 0V15z"/></svg>
             </div>
-          </div>
-        </div>
-        <div class="about-stats">
-          <div class="stat-item">
-            <div class="stat-number" data-target="3">0</div>
-            <div class="stat-label">Years Experience</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number" data-target="300">0K+</div>
-            <div class="stat-label">Users Served</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number" data-target="35">0</div>
-            <div class="stat-label">Percentage Performance Improvement</div>
-          </div>
+            <p class="award-kicker">Award · Product Innovation</p>
+            <h3>Product Innovation Award</h3>
+            <p class="award-org">Dassault Systèmes</p>
+            <p class="award-date">May 2023</p>
+            <p class="award-copy">Recognized for leading the implementation of the first Dark Mode.</p>
+          </article>
+          <article class="award-card reveal" data-focus="data">
+            <div class="award-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="3" width="14" height="13" rx="2"/><path d="M8 7h8M8 10.5h5"/><circle cx="12" cy="17.5" r="2.2"/><path d="M10.4 19.4 9 22l3-1.1L15 22l-1.4-2.6"/></svg>
+            </div>
+            <p class="award-kicker">Certification · Data Analytics</p>
+            <h3>Data Analytics Certification in Technical Skills</h3>
+            <p class="award-org">NASSCOM, India</p>
+            <p class="award-date">Nov 2021</p>
+            <p class="award-copy">Certification focused on technical skills in Python and R.</p>
+          </article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Experience Section -->
-  <section id="experience" class="experience">
-    <div class="container">
-      <h2 class="section-title" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Work Experience
-      </h2>
-      <div class="timeline">
-        <div class="timeline-item" data-aos="fade-up">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <h3>Research Assistant</h3>
-            <h4>Northeastern University</h4>
-            <p class="timeline-date">Boston, MA (Remote) | Feb 2026 - Present</p>
-            <ul class="timeline-achievements">
-              <li>Built FrailTrack, an end-to-end multimodal AI web application using React/TypeScript and FastAPI to capture cognitive, hearing, and mobility telemetry for real-time frailty screening workflow</li>
-              <li>Designed an ETL and feature pipeline translating clinical datasets into continuous digital biomarkers, mapping cognitive and mobility measures into real-time reaction-time, error, and kinematic telemetry</li>
-              <li>Retrained Random Forest models and re-aligned feature schemas with live frontend JSON payloads, enabling FastAPI to serve real-time predictions from interactive behavioral signals</li>
-              <li>Translated static OpenCV assessment metrics into dynamic web telemetry and demoed the end-to-end platform to faculty/research stakeholders, presenting its multimodal architecture and ML inference workflow</li>
+    <section id="capabilities" class="section capabilities">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Capabilities</p>
+          <h2 class="section-title">What I Build.</h2>
+        </div>
+        <div class="capability-grid">
+          <article class="capability-card reveal" data-capability="software">
+            <h3>Software Engineering</h3>
+            <ul>
+              <li>Backend APIs</li>
+              <li>Microservices</li>
+              <li>Full-stack applications</li>
+              <li>Performance optimization</li>
+              <li>CI/CD</li>
+              <li>Cloud deployment</li>
+              <li>Infrastructure automation</li>
             </ul>
-            <div class="tech-stack">
-              <span class="tech-tag">React</span>
-              <span class="tech-tag">TypeScript</span>
-              <span class="tech-tag">FastAPI</span>
-              <span class="tech-tag">Random Forest</span>
-              <span class="tech-tag">OpenCV</span>
-              <span class="tech-tag">Python</span>
+            <div class="pills">
+              <span>Java</span><span>Spring Boot</span><span>Python</span><span>FastAPI</span><span>React</span><span>Vue</span><span>AWS</span><span>Docker</span><span>Terraform</span><span>Jenkins</span>
             </div>
-          </div>
-        </div>
-        <div class="timeline-item" data-aos="fade-up">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <h3>Software Engineering Specialist</h3>
-            <h4>Dassault Systèmes</h4>
-            <p class="timeline-date">May 2021 - Dec 2023</p>
-            <ul class="timeline-achievements">
-              <li>Implemented RESTful APIs used by 300K+ users with response time less than 20ms, using Spring Boot and
-                Java 8</li>
-              <li>Led backend development for the "Source Code Review" service, managing 100+ microservices on the
-                3DEXPERIENCE cloud platform</li>
-              <li>Modernized frontend by migrating legacy UI to React.js and Vue.js, delivering Dark Mode and diff
-                comparison features</li>
-              <li>Improved frontend performance by 30% through lazy loading and component-level rendering optimizations
-              </li>
-              <li>Enhanced infrastructure observability using OpenSearch dashboards and real-time trackers</li>
-              <li>Automated CI/CD workflows with 30+ Python scripts and Jenkins, reducing release time by 35%</li>
-              <li>Achieved 100% test coverage rate using JUnit and Mockito</li>
+          </article>
+          <article class="capability-card reveal" data-capability="data">
+            <h3>Data &amp; Business Intelligence</h3>
+            <ul>
+              <li>SQL &amp; data analysis</li>
+              <li>ETL / data pipelines</li>
+              <li>Data modeling</li>
+              <li>Operational analytics</li>
+              <li>Dashboards &amp; KPIs</li>
+              <li>Data visualization</li>
+              <li>Automation</li>
             </ul>
-            <div class="tech-stack">
-              <span class="tech-tag">Spring Boot</span>
-              <span class="tech-tag">Java 8</span>
-              <span class="tech-tag">React.js</span>
-              <span class="tech-tag">Vue.js</span>
-              <span class="tech-tag">Jenkins</span>
-              <span class="tech-tag">Docker</span>
+            <div class="pills">
+              <span>Python</span><span>SQL</span><span>PostgreSQL</span><span>MySQL</span><span>AWS</span>
             </div>
-          </div>
+          </article>
+          <article class="capability-card reveal" data-capability="ai">
+            <h3>Applied AI / ML</h3>
+            <ul>
+              <li>Model training &amp; evaluation</li>
+              <li>Feature engineering</li>
+              <li>ML inference</li>
+              <li>LLM-powered workflows</li>
+              <li>NLP / speech</li>
+              <li>RAG</li>
+              <li>AI-enabled products</li>
+            </ul>
+            <div class="pills">
+              <span>Python</span><span>PyTorch</span><span>TensorFlow</span><span>FastAPI</span><span>Deepgram</span><span>LLMs</span><span>RAG</span><span>NLP</span>
+            </div>
+          </article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Projects Section -->
-  <section id="projects" class="projects">
+    <section id="projects" class="section projects">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Featured work</p>
+          <h2 class="section-title">Few Systems I've built. </h2>
+          <p class="lede lede-narrow">A collection of projects that turn complex problems into usable, real-world systems — from AI-powered applications to data-driven platforms.</p>
+        </div>
+        <div class="focus-panel">
+          <p class="eyebrow" id="focus-label">Explore by focus</p>
+          <div class="focus-tabs" role="group" aria-labelledby="focus-label">
+            <button class="focus-tab is-active" type="button" data-focus="all" aria-pressed="true">All</button>
+            <button class="focus-tab" type="button" data-focus="software" aria-pressed="false">Software Engineering</button>
+            <button class="focus-tab" type="button" data-focus="data" aria-pressed="false">Data &amp; BI</button>
+            <button class="focus-tab" type="button" data-focus="ai" aria-pressed="false">AI / ML</button>
+          </div>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card reveal" data-focus="software data ai" data-primary-focus="ai" data-order-all="1" data-order-software="2" data-order-data="3" data-order-ai="1">
+            <div class="project-card-copy">
+              <p class="project-lens" hidden></p>
+              <p class="project-kicker">AI/ML · Healthcare · Data</p>
+              <h3>FrailTrack</h3>
+              <p>Browser-based multimodal frailty screening that captures visual, hearing, and mobility assessments, then serves real-time ML inference through a React and FastAPI workflow.</p>
+              <div class="pills">
+                <span>React</span><span>TypeScript</span><span>FastAPI</span><span>Python</span><span>ML Inference</span><span>OpenCV</span>
+              </div>
+              <p class="project-note">Private · Publication in progress</p>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-focus="data ai software" data-primary-focus="data" data-order-all="2" data-order-software="6" data-order-data="1" data-order-ai="3">
+            <div class="project-card-copy">
+              <p class="project-lens" hidden></p>
+              <p class="project-kicker">Data &amp; BI · AI</p>
+              <h3>VoiceQL</h3>
+              <p>Natural-language and voice-driven analytics that converts spoken questions into SQL and visualizes database results.</p>
+              <div class="flow-row" aria-label="VoiceQL workflow">
+                <span>Voice Input</span>
+                <i>→</i>
+                <span>LLM</span>
+                <i>→</i>
+                <span>SQL</span>
+                <i>→</i>
+                <span>Charts</span>
+              </div>
+              <div class="pills">
+                <span>Python</span><span>Streamlit</span><span>Deepgram</span><span>Groq / Llama</span><span>PostgreSQL / Neon</span>
+              </div>
+              <div class="project-links">
+                <a class="btn btn-primary" href="https://github.com/jpayal0110/voiceQL" target="_blank" rel="noopener noreferrer">View Project <span aria-hidden="true">→</span></a>
+                <a class="btn btn-ghost" href="https://github.com/jpayal0110/voiceQL" target="_blank" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-focus="software ai" data-primary-focus="ai" data-order-all="6" data-order-software="7" data-order-data="7" data-order-ai="4">
+            <div class="project-card-copy">
+              <p class="project-lens" hidden></p>
+              <p class="project-kicker">AI/ML · Software</p>
+              <h3>VibeCheck</h3>
+              <p>AI-powered music recommendation app using React.js and Flask that suggests songs based on user mood using natural-language prompts. Implemented fuzzy search and NLP with FuzzyWuzzy and NLTK.</p>
+              <div class="pills">
+                <span>React.js</span><span>Flask</span><span>Python</span><span>NLP</span>
+              </div>
+              <div class="project-links">
+                <a class="btn btn-primary" href="https://github.com/jpayal0110/VibeCheck" target="_blank" rel="noopener noreferrer">View Project <span aria-hidden="true">→</span></a>
+                <a class="btn btn-ghost" href="https://github.com/jpayal0110/VibeCheck" target="_blank" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-focus="software" data-primary-focus="software" data-order-all="3" data-order-software="1" data-order-data="6" data-order-ai="6">
+            <div class="project-card-copy">
+              <p class="project-lens" hidden></p>
+              <p class="project-kicker">Software · Cloud</p>
+              <h3>Cloud-Native Web App</h3>
+              <p>Automated end-to-end cloud infrastructure provisioning on AWS using Terraform, deploying VPCs, EC2, RDS, security groups, and Route 53. Integrated Packer and GitHub Actions for CI/CD.</p>
+              <div class="pills">
+                <span>AWS</span><span>Terraform</span><span>GitHub Actions</span><span>Docker</span>
+              </div>
+              <div class="project-links">
+                <a class="btn btn-primary" href="https://github.com/jpayal0110/cloud-native-webapp" target="_blank" rel="noopener noreferrer">View Project <span aria-hidden="true">→</span></a>
+                <a class="btn btn-ghost" href="https://github.com/jpayal0110/cloud-native-webapp" target="_blank" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-focus="software ai" data-primary-focus="ai" data-order-all="4" data-order-software="5" data-order-data="5" data-order-ai="2">
+            <div class="project-card-copy">
+              <p class="project-lens" hidden></p>
+              <p class="project-kicker">AI · Product Engineering</p>
+              <h3>EnrollAI</h3>
+              <p>AI-assisted course recommendation and academic planning, with prerequisite-aware suggestions based on a student’s profile and prior coursework. Improved course selection efficiency by 40% for over 100 users.</p>
+              <div class="flow-row" aria-label="EnrollAI conceptual flow">
+                <span>Retrieve Context</span>
+                <i>→</i>
+                <span>Reason</span>
+                <i>→</i>
+                <span>Validate</span>
+                <i>→</i>
+                <span>Recommend</span>
+              </div>
+              <div class="pills">
+                <span>React.js</span><span>Node.js</span><span>Express</span><span>MongoDB</span><span>Prompt Engineering</span>
+              </div>
+              <div class="project-links">
+                <a class="btn btn-primary" href="https://github.com/jpayal0110/EnrollAI" target="_blank" rel="noopener noreferrer">View Project <span aria-hidden="true">→</span></a>
+                <a class="btn btn-ghost" href="https://github.com/jpayal0110/EnrollAI" target="_blank" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-focus="software" data-primary-focus="software" data-order-all="7" data-order-software="3" data-order-data="8" data-order-ai="7">
+            <div class="project-card-copy">
+              <p class="project-lens" hidden></p>
+              <p class="project-kicker">Software · Real-time</p>
+              <h3>Smart Whiteboard App</h3>
+              <p>Real-time collaborative whiteboard application built with TypeScript. Features include real-time collaboration, drawing tools, and seamless sharing capabilities.</p>
+              <div class="pills">
+                <span>TypeScript</span><span>Real-time</span><span>Collaboration</span><span>WebRTC</span>
+              </div>
+              <div class="project-links">
+                <a class="btn btn-primary" href="https://github.com/jpayal0110/smart-whiteboard-app" target="_blank" rel="noopener noreferrer">View Project <span aria-hidden="true">→</span></a>
+                <a class="btn btn-ghost" href="https://github.com/jpayal0110/smart-whiteboard-app" target="_blank" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-focus="software data" data-primary-focus="software" data-order-all="8" data-order-software="4" data-order-data="4" data-order-ai="8">
+            <div class="project-card-copy">
+              <p class="project-lens" hidden></p>
+              <p class="project-kicker">Software · Analytics</p>
+              <h3>SnapLink</h3>
+              <p>URL shortening service with click tracking and QR code generation. Built with Flask, featuring an analytics dashboard and a simple interface for link management.</p>
+              <div class="pills">
+                <span>Flask</span><span>Python</span><span>QR Codes</span><span>Analytics</span>
+              </div>
+              <div class="project-links">
+                <a class="btn btn-primary" href="https://github.com/jpayal0110/SnapLink" target="_blank" rel="noopener noreferrer">View Project <span aria-hidden="true">→</span></a>
+                <a class="btn btn-ghost" href="https://github.com/jpayal0110/SnapLink" target="_blank" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-focus="data" data-primary-focus="data" data-order-all="5" data-order-software="8" data-order-data="2" data-order-ai="5">
+            <div class="project-card-copy">
+              <p class="project-lens" hidden></p>
+              <p class="project-kicker">Data &amp; BI · Operations</p>
+              <h3>Business KPI Dashboard</h3>
+              <p>Operations and supply chain health dashboard providing real-time insights into business performance metrics and operational efficiency.</p>
+              <div class="pills">
+                <span>Data Visualization</span><span>Dashboard</span><span>KPIs</span><span>Analytics</span>
+              </div>
+              <div class="project-links">
+                <a class="btn btn-primary" href="https://github.com/jpayal0110/business-kpi-visualization" target="_blank" rel="noopener noreferrer">View Project <span aria-hidden="true">→</span></a>
+                <a class="btn btn-ghost" href="https://github.com/jpayal0110/business-kpi-visualization" target="_blank" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <p class="github-all reveal">
+          <a href="https://github.com/jpayal0110" target="_blank" rel="noopener noreferrer">View all on GitHub <span aria-hidden="true">→</span></a>
+        </p>
+      </div>
+    </section>
+
+    <section id="education" class="section education">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Academic background</p>
+          <h2 class="section-title">Education</h2>
+        </div>
+        <div class="education-row">
+          <article class="edu-card reveal">
+            <img src="NEUlogo.jpg" alt="Northeastern University logo" />
+            <div>
+              <h3>Northeastern University</h3>
+              <p>Masters in Computer Software Engineering</p>
+              <p class="dates">2024–2025</p>
+            </div>
+          </article>
+          <article class="edu-card reveal">
+            <img src="cdaclogo.jpeg" alt="CDAC logo" />
+            <div>
+              <h3>CDAC</h3>
+              <p>PG Diploma in Advanced Computing</p>
+              <p class="dates">2020–2021</p>
+            </div>
+          </article>
+          <article class="edu-card reveal">
+            <img src="MUlogo.webp" alt="University of Mumbai logo" />
+            <div>
+              <h3>University of Mumbai</h3>
+              <p>B.E. in Electronics Engineering</p>
+              <p class="dates">2016–2020</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact">
+      <div class="deco deco-circle deco-contact" aria-hidden="true"></div>
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Get in touch</p>
+          <h2 class="section-title">Let’s Work <em>Together.</em></h2>
+          <p class="lede">Open to software, AI/ML, data, and technical product opportunities.</p>
+        </div>
+
+        <div class="contact-grid">
+          <a class="contact-card reveal" href="mailto:ppjadhav110@gmail.com" aria-label="Email me">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M4 7l8 6 8-6"/></svg>
+          </a>
+          <a class="contact-card reveal" href="https://linkedin.com/in/payaljadhav11" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 11v6M8 8h.01M12 17v-3.5a2.5 2.5 0 015 0V17"/></svg>
+          </a>
+          <a class="contact-card reveal" href="https://github.com/jpayal0110" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.6 2 12.2c0 4.5 2.9 8.3 6.9 9.6.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.2-3.4-1.2-.4-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.5 9.5 0 015 0c2-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5 4-1.3 6.9-5.1 6.9-9.6C22 6.6 17.5 2 12 2z"/></svg>
+          </a>
+          <a class="contact-card reveal" href="https://drive.google.com/file/d/1WtlBH9k1nz4zqv8XnWNn13hp8W4rcG-D/view?usp=drive_link" target="_blank" rel="noopener noreferrer" aria-label="View resume">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 3h7l5 5v13a1 1 0 01-1 1H7a1 1 0 01-1-1V4a1 1 0 011-1z"/><path d="M14 3v5h5M8 13h8M8 17h5"/></svg>
+          </a>
+        </div>
+
+        <aside class="currently-card reveal">
+          <p class="eyebrow">Currently</p>
+          <p>Open to full-time opportunities and meaningful collaborations.</p>
+          <p>Open to relocation anywhere in the U.S.</p>
+          <p>Available to start immediately.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
     <div class="container">
-      <h2 class="section-title">Featured Projects</h2>
-      <div class="projects-grid">
-        <div class="project-card" data-aos="fade-up">
-          <div class="project-image">
-            <a href="https://github.com/jpayal0110/VibeCheck" class="project-link" target="_blank">
-              <div class="project-placeholder">🎵</div>
-            </a>
-          </div>
-          <div class="project-content">
-            <h3><a href="https://github.com/jpayal0110/VibeCheck" class="project-link" target="_blank">VibeCheck</a></h3>
-            <p>AI-powered music recommendation app using React.js and Flask that suggests songs based on user mood using
-              natural-language prompts. Implemented fuzzy search and NLP with FuzzyWuzzy and NLTK.</p>
-            <div class="project-tech">
-              <span class="tech-tag">React.js</span>
-              <span class="tech-tag">Flask</span>
-              <span class="tech-tag">Python</span>
-              <span class="tech-tag">NLP</span>
-            </div>
-          </div>
-        </div>
-        <div class="project-card" data-aos="fade-up">
-          <div class="project-image">
-            <a href="https://github.com/jpayal0110/cloud-native-webapp" class="project-link" target="_blank">
-              <div class="project-placeholder">☁️</div>
-            </a>
-          </div>
-          <div class="project-content">
-            <h3><a href="https://github.com/jpayal0110/cloud-native-webapp" class="project-link" target="_blank">Cloud-Native Web App</a></h3>
-            <p>Automated end-to-end cloud infrastructure provisioning on AWS using Terraform, deploying VPCs, EC2, RDS,
-              security groups, and Route 53. Integrated Packer and GitHub Actions for CI/CD.</p>
-            <div class="project-tech">
-              <span class="tech-tag">AWS</span>
-              <span class="tech-tag">Terraform</span>
-              <span class="tech-tag">GitHub Actions</span>
-              <span class="tech-tag">Docker</span>
-            </div>
-          </div>
-        </div>
-        <div class="project-card" data-aos="fade-up">
-          <div class="project-image">
-            <a href="https://github.com/jpayal0110/EnrollAI" class="project-link" target="_blank">
-              <div class="project-placeholder">🎓</div>
-            </a>
-          </div>
-          <div class="project-content">
-            <h3><a href="https://github.com/jpayal0110/EnrollAI" class="project-link" target="_blank">EnrollAI</a></h3>
-            <p>AI-driven course registration platform with personalized recommendations. Built with React.js, Node.js,
-              and prompt-engineered ML model, improving course selection efficiency by 40% for over 100 users.</p>
-            <div class="project-tech">
-              <span class="tech-tag">React.js</span>
-              <span class="tech-tag">Node.js</span>
-              <span class="tech-tag">AI/ML</span>
-              <span class="tech-tag">MongoDB</span>
-            </div>
-          </div>
-        </div>
-        <div class="project-card" data-aos="fade-up">
-          <div class="project-image">
-            <a href="https://github.com/jpayal0110/smart-whiteboard-app" class="project-link" target="_blank">
-              <div class="project-placeholder">🖼️</div>
-            </a>
-          </div>
-          <div class="project-content">
-            <h3><a href="https://github.com/jpayal0110/smart-whiteboard-app" class="project-link" target="_blank">Smart Whiteboard App</a></h3>
-            <p>Real-time collaborative whiteboard application built with TypeScript. Features include real-time
-              collaboration, drawing tools, and seamless sharing capabilities.</p>
-            <div class="project-tech">
-              <span class="tech-tag">TypeScript</span>
-              <span class="tech-tag">Real-time</span>
-              <span class="tech-tag">Collaboration</span>
-              <span class="tech-tag">WebRTC</span>
-            </div>
-          </div>
-        </div>
-        <div class="project-card" data-aos="fade-up">
-          <div class="project-image">
-            <a href="https://github.com/jpayal0110/SnapLink" class="project-link" target="_blank">
-              <div class="project-placeholder">🔗</div>
-            </a>
-          </div>
-          <div class="project-content">
-            <h3><a href="https://github.com/jpayal0110/SnapLink" class="project-link" target="_blank">SnapLink</a></h3>
-            <p>URL shortening service with click tracking and QR code generation. Built with Flask, featuring analytics
-              dashboard and user-friendly interface for link management.</p>
-            <div class="project-tech">
-              <span class="tech-tag">Flask</span>
-              <span class="tech-tag">Python</span>
-              <span class="tech-tag">QR Codes</span>
-              <span class="tech-tag">Analytics</span>
-            </div>
-          </div>
-        </div>
-        <div class="project-card" data-aos="fade-up">
-          <div class="project-image">
-            <a href="https://github.com/jpayal0110/business-kpi-visualization" class="project-link" target="_blank">
-              <div class="project-placeholder">📊</div>
-            </a>
-          </div>
-          <div class="project-content">
-            <h3><a href="https://github.com/jpayal0110/business-kpi-visualization" class="project-link" target="_blank">Business KPI Dashboard</a></h3>
-            <p>Operations & Supply Chain Health Dashboard providing real-time insights into business performance metrics
-              and operational efficiency.</p>
-            <div class="project-tech">
-              <span class="tech-tag">Data Visualization</span>
-              <span class="tech-tag">Dashboard</span>
-              <span class="tech-tag">KPIs</span>
-              <span class="tech-tag">Analytics</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Education Section -->
-  <section id="education" class="education">
-    <div class="container">
-      <h2 class="section-title">Education</h2>
-      <div class="education-grid">
-        <div class="education-card" data-aos="fade-up">
-          <div class="education-icon">
-            <img src="NEUlogo.jpg" alt="Northeastern University Logo" class="education-logo">
-          </div>
-          <h3>Masters in Computer Software Engineering</h3>
-          <h4>Northeastern University</h4>
-          <p class="education-date">Jan 2024 - Dec 2025</p>
-          <p>Coursework: Artificial Intelligence for Engineers, Advanced Data Science with Python, Cloud
-            Computing, Application Engineering and Development in Java, Database Design, Web Development Technologies,
-            and Big Data Indexing.</p>
-        </div>
-        <div class="education-card" data-aos="fade-up">
-          <div class="education-icon">
-            <img src="cdaclogo.jpeg" alt="CDAC Logo" class="education-logo">
-          </div>
-          <h3>PG Diploma in Advanced Computing</h3>
-          <h4>Center for Development of Advanced Computing</h4>
-          <p class="education-date">Sept 2020 - Apr 2021</p>
-          <p>Coursework: Introduction to Python, Object Oriented Programming, Foundations of Multithreaded
-            Programming, Database Technologies, and Advanced Web Technologies.</p>
-        </div>
-        <div class="education-card" data-aos="fade-up">
-          <div class="education-icon">
-            <img src="MUlogo.webp" alt="University of Mumbai Logo" class="education-logo">
-          </div>
-          <h3>Bachelor of Electronics Engineering</h3>
-          <h4>University of Mumbai</h4>
-          <p class="education-date">Sept 2016 - Nov 2020</p>
-          <p>Coursework:Study of electronics engineering principles, circuit design, and electronic systems</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- Footer -->
-  <footer id="footer" class="footer">
-    <div class="footer-content">
-      <h2>Get In Touch</h2>
-      <div class="social-links">
-        <a href="https://github.com/jpayal0110" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://linkedin.com/in/payaljadhav11" class="social-link" target="_blank"><i
-            class="fab fa-linkedin"></i></a>
-        <a href="mailto:jpayal0110@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
-      </div>
-      <p class="footer-text">&copy; 2026 Payal Jadhav. All rights reserved.</p>
+      <p>© 2026 Payal Jadhav. All rights reserved.</p>
     </div>
   </footer>
 
   <script src="script.js"></script>
 </body>
-
 </html>
